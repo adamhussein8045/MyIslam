@@ -69,6 +69,7 @@ export function useSchedule() {
   useEffect(() => {
     if (!bundle) return;
     const last = bundle.days[bundle.days.length - 1];
+    if (!last) return;
     const wait = last.times.Fajr - Date.now() - 6 * 3600000;
     const t = setTimeout(load, Math.max(60000, Math.min(wait, 2 ** 31 - 1)));
     return () => clearTimeout(t);

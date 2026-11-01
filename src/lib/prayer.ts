@@ -129,15 +129,15 @@ export interface PrayerStatus {
 export function computeStatus(days: DaySchedule[], now: number): PrayerStatus {
   const all = days.flatMap((d) => PRAYERS.map((k) => ({ key: k, time: d.times[k] }))).sort((a, b) => a.time - b.time);
   const idx = all.findIndex((x) => x.time > now);
-  const next = idx >= 0 ? all[idx] : null;
-  const prev = idx > 0 ? all[idx - 1] : idx === -1 && all.length ? all[all.length - 1] : null;
+  const next = idx >= 0 ? (all[idx] ?? null) : null;
+  const prev = (idx > 0 ? all[idx - 1] : idx === -1 ? all[all.length - 1] : null) ?? null;
   return { today: pickToday(days, now), next, prev };
 }
 
 function pickToday(days: DaySchedule[], now: number) {
   // the day whose date matches local date in its timezone
   if (!days.length) return null;
-  const tz = days[0].timezone;
+  const tz = days[0]?.timezone;
   const local = new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date(now));
   return days.find((d) => d.date === local) ?? null;
 }
