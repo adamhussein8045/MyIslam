@@ -131,13 +131,7 @@ export function computeStatus(days: DaySchedule[], now: number): PrayerStatus {
   const idx = all.findIndex((x) => x.time > now);
   const next = idx >= 0 ? all[idx] : null;
   const prev = idx > 0 ? all[idx - 1] : idx === -1 && all.length ? all[all.length - 1] : null;
-  const today =
-    days.find((d) => d.times.Fajr <= now && now < (days[days.indexOf(d) + 1]?.times.Fajr ?? Infinity) && now >= d.times.Fajr) ??
-    days.find((d) => d.times.Fajr > now) ??
-    null;
-  // "Today" = the calendar day whose Isha hasn't ended yet (ends at next day's Fajr).
-  const cal = days.find((d, i) => now < (days[i + 1]?.times.Fajr ?? Infinity) && (i === 0 || now >= days[i - 1].times.Isha || now >= d.times.Fajr || true));
-  return { today: pickToday(days, now) ?? cal ?? today, next, prev };
+  return { today: pickToday(days, now), next, prev };
 }
 
 function pickToday(days: DaySchedule[], now: number) {
