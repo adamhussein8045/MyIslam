@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export function NextPrayerCard({ bundle, now, hour12 }: { bundle: ScheduleBundle; now: number; hour12: boolean }) {
   const { next, prev } = computeStatus(bundle.days, now);
   if (!next) return null;
-  const tz = bundle.days[0].timezone;
+  const tz = bundle.days[0]?.timezone;
   const span = prev ? next.time - prev.time : 1;
   const pct = prev ? Math.min(100, Math.max(0, ((now - prev.time) / span) * 100)) : 0;
   return (
