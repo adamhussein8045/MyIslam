@@ -15,7 +15,7 @@ const NAV = [
 export function AppShell({ children }: { children: ReactNode }) {
   const online = useOnline();
   return (
-    <div className="min-h-screen pb-24 md:pb-10">
+    <div className="min-h-screen overflow-x-clip pb-24 md:pb-10">
       <header className="sticky top-0 z-30 bg-hero pattern-geo shadow-soft">
         <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-3">
           <Link to="/" aria-label="MyIslam - الرئيسية">
