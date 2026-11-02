@@ -73,7 +73,7 @@ export function PrayerTimesList({ bundle, now, hour12, showSunrise = false }: { 
   );
 }
 
-export function ScheduleStatus({ state, error, fetchedAt, retry }: { state: ScheduleState; error: ScheduleError; fetchedAt?: number; retry: () => void }) {
+export function ScheduleStatus({ state, error, fetchedAt, retry }: { state: ScheduleState; error: ScheduleError; fetchedAt?: number | undefined; retry: () => void }) {
   if (state === "loading" && !fetchedAt)
     return (
       <div className="flex items-center gap-2 rounded-2xl border bg-card p-4 text-sm text-muted-foreground">
