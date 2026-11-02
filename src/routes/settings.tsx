@@ -35,7 +35,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function SettingsPage() {
   const { settings, update, reset } = useSettings();
   const [open, setOpen] = useState(false);
-  const install = useInstall() as unknown as { installed?: boolean; ios?: boolean; prompt?: () => void; canPrompt?: boolean };
+  const install = useInstall();
   return (
     <div className="space-y-5 pb-6">
       <h1 className="font-display text-3xl font-bold">الإعدادات</h1>
@@ -89,8 +89,8 @@ function SettingsPage() {
       </Section>
       {!install.installed && (
         <Section title="تثبيت التطبيق">
-          {install.canPrompt && install.prompt ? (
-            <Button onClick={install.prompt}><Download /> تثبيت على الجهاز</Button>
+          {install.canPrompt ? (
+            <Button onClick={install.install}><Download /> تثبيت على الجهاز</Button>
           ) : (
             <InstallInstructions ios={!!install.ios} />
           )}
