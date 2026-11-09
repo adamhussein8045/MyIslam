@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Compass, Clock } from "lucide-react";
+import { Compass, Clock, BookOpen } from "lucide-react";
 import { useNow, useSettings } from "@/lib/store";
 import { useSchedule } from "@/lib/use-schedule";
 import { computeStatus } from "@/lib/prayer";
@@ -16,6 +16,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "اعرف الصلاة القادمة والوقت المتبقي ومواقيت اليوم لموقعك." },
       { property: "og:title", content: "MyIslam — الصلاة القادمة ومواقيت اليوم" },
       { property: "og:description", content: "اعرف الصلاة القادمة والوقت المتبقي ومواقيت اليوم لموقعك." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,
@@ -46,7 +48,8 @@ function Home() {
           <PrayerTimesList bundle={bundle} now={now} hour12={settings.hour12} />
         </>
       )}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <Link to="/quran" className="flex items-center gap-2 rounded-2xl border bg-card p-4 text-sm font-medium hover:border-gold"><BookOpen className="size-5 text-gold" /> القرآن الكريم</Link>
         <Link to="/prayer-times" className="flex items-center gap-2 rounded-2xl border bg-card p-4 text-sm font-medium hover:border-gold"><Clock className="size-5 text-gold" /> كل المواقيت</Link>
         <Link to="/qibla" className="flex items-center gap-2 rounded-2xl border bg-card p-4 text-sm font-medium hover:border-gold"><Compass className="size-5 text-gold" /> اتجاه القبلة</Link>
       </div>

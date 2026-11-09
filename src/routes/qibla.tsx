@@ -15,6 +15,8 @@ export const Route = createFileRoute("/qibla")({
       { name: "description", content: "بوصلة تُظهر اتجاه القبلة والمسافة إلى الكعبة من موقعك." },
       { property: "og:title", content: "اتجاه القبلة — MyIslam" },
       { property: "og:description", content: "بوصلة تُظهر اتجاه القبلة والمسافة إلى الكعبة من موقعك." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Qibla,

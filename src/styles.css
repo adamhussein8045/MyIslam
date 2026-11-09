@@ -117,3 +117,20 @@
 @utility shadow-soft { box-shadow: var(--shadow-soft); }
 @utility shadow-gold { box-shadow: var(--shadow-gold); }
 @utility tabular { font-variant-numeric: tabular-nums; }
+
+:root { --mushaf-paper: oklch(1 0 0); --mushaf-desk: oklch(0.94 0.01 100); }
+.dark { --mushaf-desk: oklch(0.24 0.02 165); }
+.quran-reader { width: 100%; }
+.quran-fullscreen { position: fixed; inset: 0; z-index: 100; overflow: auto; padding: 16px; background: var(--background); }
+.quran-fullscreen > * { max-width: 1000px; margin-inline: auto; }
+.mushaf-viewport { position: relative; overflow: auto; background: var(--mushaf-desk); padding: 16px; min-height: 340px; touch-action: pan-y pinch-zoom; }
+.mushaf-page { display: block; width: 100%; max-width: 570px; height: auto; margin-inline: auto; background: var(--mushaf-paper); }
+.mushaf-status { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+.zoom-125 .mushaf-page { width: 125%; max-width: 713px; }
+.zoom-150 .mushaf-page { width: 150%; max-width: 855px; }
+.zoom-175 .mushaf-page { width: 175%; max-width: 998px; }
+.zoom-200 .mushaf-page { width: 200%; max-width: 1140px; }
+.zoom-225 .mushaf-page { width: 225%; max-width: 1283px; }
+.zoom-250 .mushaf-page { width: 250%; max-width: 1425px; }
+[class*="zoom-"]:not(.zoom-100) { touch-action: auto; }
+@media (max-width: 640px) { .mushaf-viewport { padding: 6px; } }

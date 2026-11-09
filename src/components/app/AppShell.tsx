@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Compass, Home, Settings, Clock, WifiOff } from "lucide-react";
+import { Compass, Home, Settings, Clock, WifiOff, BookOpen } from "lucide-react";
 import type { ReactNode } from "react";
 import { Logo } from "./Logo";
 import { InstallPrompt } from "./InstallPrompt";
@@ -8,6 +8,7 @@ import { useOnline } from "@/lib/store";
 const NAV = [
   { to: "/", label: "الرئيسية", icon: Home },
   { to: "/prayer-times", label: "مواقيت الصلاة", icon: Clock },
+  { to: "/quran", label: "القرآن الكريم", icon: BookOpen },
   { to: "/qibla", label: "اتجاه القبلة", icon: Compass },
   { to: "/settings", label: "الإعدادات", icon: Settings },
 ] as const;
@@ -46,7 +47,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       <InstallPrompt />
 
       <nav className="fixed inset-x-0 bottom-0 z-30 border-t bg-card/95 backdrop-blur md:hidden" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-5">
           {NAV.map((n) => (
             <Link
               key={n.to}

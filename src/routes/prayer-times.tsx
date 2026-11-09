@@ -14,6 +14,8 @@ export const Route = createFileRoute("/prayer-times")({
       { name: "description", content: "مواقيت الصلاة الخمس والشروق لموقعك." },
       { property: "og:title", content: "مواقيت الصلاة — MyIslam" },
       { property: "og:description", content: "مواقيت الصلاة الخمس والشروق لموقعك." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: PrayerTimes,

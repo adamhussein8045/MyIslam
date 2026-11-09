@@ -16,6 +16,8 @@ export const Route = createFileRoute("/settings")({
       { name: "description", content: "اضبط الموقع وطريقة حساب المواقيت والمظهر." },
       { property: "og:title", content: "الإعدادات — MyIslam" },
       { property: "og:description", content: "اضبط الموقع وطريقة حساب المواقيت والمظهر." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: SettingsPage,
