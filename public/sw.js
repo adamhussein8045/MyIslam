@@ -1,8 +1,8 @@
-const VERSION = 'myislam-v2';
+const VERSION = 'myislam-v3';
 const SHELL = `${VERSION}-shell`;
 const PAGES = `${VERSION}-mushaf`;
 const base = new URL(self.registration.scope).pathname;
-const routes = ['', 'quran/', 'prayer-times/', 'qibla/', 'settings/'];
+const routes = ['', 'quran', 'quran/', 'prayer-times', 'prayer-times/', 'qibla', 'qibla/', 'settings', 'settings/'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(SHELL).then(cache => cache.addAll(routes.map(p => base + p))));
   self.skipWaiting();
